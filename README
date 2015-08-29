@@ -1,0 +1,9 @@
+Install & Run:
+
+  - git clone https://github.com/slasyz/nanomsg-demo.git
+  - cd nanomsg-demo
+  - go build
+
+  - ./nanomsg-demo IN   # run input node
+  - ./nanomsg-demo A    # or B, or C -- run output node
+  - ./nanomsg-demo LOG  # run log node
