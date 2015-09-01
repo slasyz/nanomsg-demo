@@ -6,26 +6,30 @@ import (
     "log"
 )
 
-func nodeOutput(num, addr string) {
+func nodeSubscriber() {
+    // Create SUB socket
     socket, err := nanomsg.NewSubSocket()
     if err != nil {
         log.Fatalln("Error while creating socket.")
     }
     defer socket.Close()
 
-    err = socket.Subscribe(num)
+    // Subscribe to ""
+    err = socket.Subscribe("")
     if err != nil {
-        log.Fatalf("Error while subscribing to %s topic.\n", num)
+        log.Fatalln("Error while subscribing to \"\" topic.")
     }
 
-    _, err = socket.Connect(addr)
+    // Connect to socket.
+    _, err = socket.Connect(addressPS)
     if err != nil {
         log.Fatalln("Error while connecting to address.")
     }
 
     log.Println("Ok, waiting for something...")
-    fmt.Println(split)
+    fmt.Println(delim)
 
+    // Read PUB from server
     for {
         msg, err := socket.Recv(0)
         if err != nil {
@@ -33,8 +37,10 @@ func nodeOutput(num, addr string) {
             continue
         }
 
-        log.Println("Got a letter for you!")
-        fmt.Println(string(msg[1:]))
-        fmt.Println(split)
+        // Output it to stdout
+        log.Println("Got a message:")
+        fmt.Println(string(msg))
+        fmt.Println(delim)
     }
+
 }
