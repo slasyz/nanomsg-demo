@@ -4,6 +4,7 @@ Install & Run:
   - cd nanomsg-demo
   - go build
 
-  - ./nanomsg-demo IN   # run input node
-  - ./nanomsg-demo A    # or B, or C -- run output node
-  - ./nanomsg-demo LOG  # run log node
+  - ./nanomsg-demo A       # run server A (or server B or C)
+  - ./nanomsg-demo FRW     # run forwarder
+  - ./nanomsg-demo CLIENT  # run a client simulation
+  - ./nanomsg-demo SUB     # run pub-sub subscriber
